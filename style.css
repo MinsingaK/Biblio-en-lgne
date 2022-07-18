@@ -1,0 +1,258 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+header{
+    background-color: rgb(224, 222, 222);
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+}
+
+header span{
+    margin-top: 5px;
+    margin-left: 25px;
+    font-size: 2rem;
+    font-style: italic;
+}
+
+nav{
+    margin-right: 10px;
+    width: 40vw;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+nav ul div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav ul li{
+    display: flex;
+    list-style: none;
+}
+
+nav ul div li a{
+    text-decoration: none;
+    color: gray;
+    font-size: 18px;
+    position: relative;
+}
+
+nav ul div li a::after{
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 4px;
+    background-color: rgb(156, 179, 253); 
+    left: 0;
+    top: -40px;
+    transition: .3s;
+}
+
+nav li a:hover::after{
+    color: black;
+    width: 100%;
+}
+
+nav li a.active,
+nav li a:hover{
+    color: black;
+}
+
+/* traitement de la page connexion */
+.body2{    
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    flex-direction: column;
+    display: flex;
+    background-color: rgb(171, 119, 119);
+}
+
+.card-box{
+    padding: 20px 40px;
+    top: 30px;
+    position: relative;
+    text-align: center;
+    max-width: 380px;
+    height: 450px;
+    margin: 0 auto;
+    background-color: rgb(136,83,83 );
+    border-radius: 20px;
+}
+
+.card-box h1{
+    color: white;
+    margin-bottom: 30px;
+}
+
+.card-box a {
+    /* text-decoration: none; */
+    color: lightblue;
+}
+
+.card-box a:hover {
+    /* text-decoration: none; */
+    color: black;
+}
+
+.btn {
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    background-color: rgb(51, 44, 122);
+    font-family: inherit;
+    font-size: 25px;
+    border: 0;
+    border-radius: 10px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.btn:focus {
+    outline: none;
+}
+  
+.btn:active {
+    transform: scale(0.98);
+}
+  
+.text {
+    margin-top: 5px;
+    color: white;
+    font-size: 1.2rem;
+}
+  
+.form-control {
+    position: relative;
+    margin: 20px 0 40px;
+    width: 300px;
+    font-style: italic;
+}
+
+.form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px #fff solid;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+  outline: 0;
+  border-bottom-color: lightblue;
+}
+
+.form-control label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
+}
+
+.form-control label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+  color: lightblue;
+  transform: translateY(-30px);
+}
+
+/* Inscription */
+.body3{
+    background: rgb(245, 245, 245);
+}
+
+.register-box{
+    background: #fff;
+    padding: 25px 30px;
+    top: 30px;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+    flex-direction: column;    
+    align-items: center;
+    max-width: 700px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.register-box p{
+    font-size: 1.5rem;
+}
+
+.register-box form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+form  .user-details .input-box{
+    width: calc(100% / 2 - 20px);
+    margin: 20px 0 12px 0;
+}
+
+form  .user-details .input-box label{
+    font-size: 1.2rem;
+}
+
+.user-details .input-box input,
+.user-details .input-box textarea{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all .3s ease;
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box textarea:focus{
+    border-color: #9b59b6;
+}
+
+form button{
+    cursor: pointer;
+    height: 45px;
+    margin: 45px 0;
+    width: 100%;
+    outline: none;
+    background-color: rgb(74, 52, 133);
+    font-style: italic;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 1.3rem;
+}
+
+form button:active{
+    transform: scale(0.98);
+}
+
+
