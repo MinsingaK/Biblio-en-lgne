@@ -2,6 +2,13 @@
     box-sizing: border-box;
 }
 
+/* *****************************************fichier index.html******************************************* */
+
+body #main{
+    background: url("images/prague-980732__340.jpg") no-repeat;
+    background-size: cover;
+}
+
 body{
     margin: 0;
 }
@@ -219,6 +226,18 @@ form  .user-details .input-box label{
     font-size: 1.2rem;
 }
 
+form  .user-details .input-box select{
+    width: 100px;
+    height: 35px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all .3s ease;
+}
+
 .user-details .input-box input,
 .user-details .input-box textarea{
     height: 45px;
@@ -255,4 +274,75 @@ form button:active{
     transform: scale(0.98);
 }
 
+.card{
+    background: rgb(6,6,31);
+    background: linear-gradient(90deg, rgba(6,6,31,1) 0%, rgba(194,196,207,1) 0%, rgba(170,171,185,0.9752275910364145) 99%);
+    padding: 25px 30px;
+    top: 30px;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+    flex-direction: column;    
+    align-items: center;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: -8px 9px 27px 0px rgba(0,0,0,0.73);
+    -webkit-box-shadow: -8px 9px 27px 0px rgba(0,0,0,0.73);
+    -moz-box-shadow: -8px 9px 27px 0px rgba(0,0,0,0.73);
+}
 
+.form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-container input,
+.form-container textarea{
+    height: 30px;
+    width: 60%;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all .3s ease;
+}
+
+.card p{
+    font-size: 1.5rem;
+}
+
+.form-container input:focus,
+.form-container textarea:focus{
+    border-color: #9b59b6;
+}
+
+.card .form-container select{
+    width: 100px;
+    height: 35px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all .3s ease;
+}
+
+.form-container textarea{
+    height: 90px;
+    width: 60%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all .3s ease;
+}
+
+.card button{
+    margin-bottom: 80px;
+}

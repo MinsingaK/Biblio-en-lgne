@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link rel="stylesheet" href="../style.css">
+        <title>publication du livre</title>
+    </head>
+    <body>
+        <header>
+            <span>Ma Biblio</span>
+            <nav>
+                <ul>
+                    <div>
+                        <li><a href="../index.html">Accueil</a></li>
+                        <i class="fa-solid fa-house"></i>
+                    </div>
+                    <div>
+                        <li><a href="#">A propos</a></li>
+                        <i class="fa-solid fa-info"></i>
+                    </div>
+                </ul>
+            </nav>
+        </header> 
+        <div class="card">
+            <p>Veuillez remplir les champs suivants!!!</p>
+            <form action="" method="get">
+                <div class="form-container">
+                    <label for="titre" id="user">Titre</label>
+                    <input type="text" placeholder="entrer le titre de votre document" required>
+                    <label for="Catégorie" id="categorie">Catégorie</label> 
+                    <select name="categorie" id="categorie">
+                        <option value="histoire">Histoire</option>
+                        <option value="geographie">Géographie</option>
+                        <option value="mathematiques">Mathématiques</option>
+                        <option value="informatique">Informatique</option>
+                        <option value="science">Science</option>
+                        <option value="physique">Physique</option>
+                        <option value="chimie">Chimie</option>
+                    </select>
+                    <input type="file" placeholder="uploader votre livre" required>
+                    <label for="details" id="details">Message</label>
+                    <textarea placeholder="un petit message sur le contenu que vous puliez" required id="details" cols="30" rows="10"></textarea>
+                    <button onclick="validation();" type="submit">Publier le livre</button>
+                </div>
+            </form>
+        </div>
+    </body>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        function validation(){
+            swal({
+                text: "Création du compte reussie!",
+                icon: "success",
+                button: "Aww yiss!",
+            });
+        }
+    </script>
+</html>

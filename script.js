@@ -1,11 +1,22 @@
-const labels = document.querySelectorAll(".form-control label")
+/*********************page principale index.html***************** */
+//traitement du bouton de recherche
 
-labels.forEach((label) => {
-  label.innerHTML = label.innerHTML
-    .split("")
-    .map(
-      (letter, idx) =>
-        `<span style="transition-delay:${idx * 50}ms">${letter}</span>`
-    )
-    .join("")
+const widget = document.querySelector(".widget")
+
+const btn = document.querySelector(".btn")
+
+const input = document.querySelector(".input")
+
+btn.addEventListener('click', () => {
+    widget.classList.toggle("active")
+    input.focus()
 })
+
+
+//traitement de la sidebar
+let boutton = document.querySelector("#btn")
+let sidebar= document.querySelector(".sidebar")
+
+boutton.onclick = function(){
+  sidebar.classList.toggle("active")
+}

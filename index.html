@@ -1,29 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <script defer src="./srcipt.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Accueil de Ma Biblio</title>
-</head>
-<body>
-    <header>
-        <span>Ma Biblio</span>
-        <nav>
-            <ul>
-                <div>
-                    <li><a href="#">Accueil</a></li>
-                    <i class="fa-solid fa-house"></i>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link rel="shorcut icon" href="./images/alien-153542__340.jpg">
+        <script defer src="./script.js"></script>
+        <link rel="stylesheet" href="./style1.css">
+        <title>Accueil de Ma Biblio</title>
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fa-solid fa-book-open"></i>
+                    <div class="logo_name">Book</div>
                 </div>
-                <div>
-                    <li><a href="#">A propos</a></li>
-                    <i class="fa-solid fa-info"></i>
-                </div>
+                <i class="fa-solid fa-bars" id="btn"></i>
+            </div>
+            <ul class="new-list">
+                <li>
+                    <a href="./index.html">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="links_name">Accueil</span>
+                    </a>
+                    <span class="tooltip">Accueil</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-info"></i>
+                        <span class="links_name">A propos</span>
+                    </a>
+                    <span class="tooltip">A propos</span>
+                </li>
+                <li>
+                    <a href="./login/connexion.html">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        <span class="links_name">Connexion</span>
+                    </a>
+                    <span class="tooltip">Connexion</span>
+                </li>
+                <li>
+                    <a href="./login/register.html">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span class="links_name">Inscription</span>
+                    </a>
+                    <span class="tooltip">Inscription</span>
+                </li>
             </ul>
-        </nav>
-    </header>
-</body>
+        </div>
+        <div class="home-content">
+            <header>
+                <span>Ma Biblio</span>
+            </header>
+            <section class="top">
+                <h2>Bienvenue sur <span>Ma Biblio</span></h2>
+                <div class="widget">
+                    <input class="input" type="text" placeholder="Search...">
+                    <button class="btn"><i class="fas fa-search"></i></button>
+                </div>
+            </section>
+            <section class="contain">
+                <div class="book">
+                    <button class="btn1 active">Tous les livres publiés</button>
+                    <button class="btn2">Toutes les catégories</button>
+                </div>
+                <div class="all-book">
+                    <!-- c'est ici que seront publiés les livres -->
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                </div>
+            </section>
+            <div class="btn4">
+                <button><a href="./publication/publier.html">Publier un livre</a></button>
+            </div>
+            <footer>
+                <p>&copy; MK - Ubix 2022</p>
+            </footer>
+        </div>
+    </body>
 </html>
