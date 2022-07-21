@@ -1,13 +1,21 @@
 <?php
 class User{
-    const LIMIT_USERNAME = '5';
+    const LIMIT_USERNAME = '6';
     const LIMIT_PWD = '6';
-    private $nomuser;
-    private $pwduser;
+    const LIMIT_DETAILS = '50';
+    private $username;
+    private $pwd;
+    private $profession;
+    private $details;
+    private $email;
 
-    public function __construct(string $nomuser, string $pwduser){
-        $this->nomuser = $nomuser;
-        $this->pwduser = $pwduser;
+
+    public function __construct(string $username, string $pwd, string $details, string $profession, string $email){
+        $this->username = $username;
+        $this->pwd = $pwd;
+        $this->details = $details;
+        $this->profession = $profession;
+        $this->email = $email;
     }
 
     public function isValid():bool
@@ -18,26 +26,29 @@ class User{
     public function getErrors(): array
     {
         $errors = [];
-        if(strlen($this->nomuser) < self::LIMIT_USERNAME){
-            $errors['nomuser']='Votre nom d\'utilsateur est trop court';
+        if(strlen($this->username) < self::LIMIT_USERNAME){
+            $errors['username']='Votre nom d\'utilsateur est trop court';
         }
-        if(strlen($this->pwduser) < self::LIMIT_PWD){
-            $errors['pwduser']='Votre mot de passe est trop court';
+        if(strlen($this->pwd) < self::LIMIT_PWD){
+            $errors['pwd']='Votre mot de passe est trop court';
+        }
+        if(strlen($this->details) < self::LIMIT_DETAILS){
+            $errors['details']='Les détails sont assez courts, veuillez en rajouter s\'il vous plait';
         }
         return $errors;
     }
 
-    public function mistakes(): array
-    {
-        $errors = [];
+    // public function mistakes(): array
+    // {
+    //     $errors = [];
         
-        if(strcmp($this->nomuser, 'nomuser') != 0){
-            $errors['nomuser']='le nom d\'utilsateur ne correspond pas';
-        }
-        if(strcmp($this->pwduser, 'pwduser') != 0){
-            $errors['pwduser']='Le mot de passe ne correspond pas';
-        }
-        return $errors;
-    }
+    //     if(strcmp($this->nomuser, 'nomuser') != 0){
+    //         $errors['nomuser']='le nom d\'utilsateur ne correspond pas';
+    //     }
+    //     if(strcmp($this->pwduser, 'pwduser') != 0){
+    //         $errors['pwduser']='Le mot de passe ne correspond pas';
+    //     }
+    //     return $errors;
+    // }
 
 }

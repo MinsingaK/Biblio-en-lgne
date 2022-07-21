@@ -1,3 +1,21 @@
+<?php
+    // initialiser la session
+    session_start();
+    // verifier si l'utilisateur est connecté et si c'est pas le cas, le rediriger ver la zone de connexion
+    // if(!isset($_SESSION['username'])){
+    //     header("Location: ../login/connexion.php");
+    //     exit();
+    // }
+    $nomuser = null;
+    if(!empty($_COOKIE['username'])){
+        $nomuser = $_POST['username'];
+    }
+    if(!empty($_POST['username'])){
+        setcookie('username',  $_POST['username']);
+        $nomuser = $_POST['username'];
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +24,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="shorcut icon" href="./images/alien-153542__340.jpg">
-    <link rel="stylesheet" href="style2.css">
-    <title>choix de l'user</title>
+    <link rel="stylesheet" href="../style1.css">
+    <script defer src="./script.js"></script>
+    <title>page user</title>
 </head>
     <body>
         <div class="sidebar">
@@ -20,7 +39,7 @@
             </div>
             <ul class="new-list">
                 <li>
-                    <a href="../index.html">
+                    <a href="./index.php">
                         <i class="fa-solid fa-house"></i>
                         <span class="links_name">Accueil</span>
                     </a>
@@ -34,42 +53,24 @@
                     <span class="tooltip">A propos</span>
                 </li>
                 <li>
-                    <a href="../login/connexion.html">
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        <span class="links_name">Connexion</span>
+                    <a href="./login/logout.php">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span class="links_name">Déconnexion</span>
                     </a>
-                    <span class="tooltip">Connexion</span>
+                    <span class="tooltip">Déconnexion</span>
                 </li>
-                <li>
-                    <a href="../login/register.html">
-                        <i class="fa-solid fa-angle-right"></i>
-                        <span class="links_name">Inscription</span>
-                    </a>
-                    <span class="tooltip">Inscription</span>
-                </li>  
             </ul>
         </div>
         <div class="home-content">
             <header>
                 <span>Ma Biblio</span>
             </header>
-            <h3>Publier en tant que:</h3>
-            <div class="card-box">
-                <div class="card">
-                    <div class="card1">
-                        <button><a href="#">Enseignant</a></button> 
-                        <img src="../images/icons8_teacher_100px.png" alt="">
-                    </div>
-                    <div class="card1">
-                        <button><a href="#">Etudiant</a></button> 
-                        <img src="../images/icons8_student_male_40px.png" alt="">
-                    </div>
-                </div>
-            </div>
         </div>
+        <?php if($nomuser): ?>
+            <h1>Bonjour <?= htmlentities($nomuser) ?></h1>
+        <?php endif?>
     </body>
     <script>
-        /**********************traitement de la sidebar*****************************************/
         let boutton = document.querySelector("#btn")
         let sidebar= document.querySelector(".sidebar")
 
