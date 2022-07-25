@@ -115,6 +115,10 @@ nav li a:hover{
     color: black;
 }
 
+.body2 form{
+    position: relative;
+}
+
 .btn {
     color: white;
     cursor: pointer;
@@ -125,7 +129,7 @@ nav li a:hover{
     font-size: 25px;
     border: 0;
     border-radius: 10px;
-    margin-top: 25px;
+    margin-top: 45px;
     text-align: center;
 }
 
@@ -136,9 +140,17 @@ nav li a:hover{
 .btn:active {
     transform: scale(0.98);
 }
+
+.body2 form #forgot {
+    position: absolute;
+    font-size: 1.2rem;
+    text-decoration: none;
+    left: 0;
+}
   
 .text {
-    margin-top: 5px;
+    position: absolute;
+    top: 85%;
     color: white;
     font-size: 1.2rem;
 }

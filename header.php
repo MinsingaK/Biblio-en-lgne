@@ -6,15 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <link rel="shorcut icon" href="./images/alien-153542__340.jpg">
-        <script defer src="./script.js"></script>
+
         <link rel="stylesheet" href="./style1.css">
         <title><?= $title ?></title>
     </head>
     <body>
-        <div class="home-content">
-            <header>
-                <span>Ma Biblio</span>
-            </header>
         <div class="sidebar">
             <div class="logo-container">
                 <div class="logo">
@@ -39,7 +35,7 @@
                     <span class="tooltip">A propos</span>
                 </li>
                 <li>
-                    <a href="./login/connexion.php">
+                    <a href="./login/login.php">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
                         <span class="links_name">Connexion</span>
                     </a>
@@ -54,3 +50,51 @@
                 </li>
             </ul>
         </div>
+        <div class="home-content">
+            <header>
+                <span>Ma Biblio</span>
+            </header>
+            <section class="top">
+                <h2>Bienvenue sur <span>Ma Biblio</span></h2>
+                    <div class="cat">
+                        <select name="categorie" id="categorie">
+                            <option value="histoire">Histoire</option>
+                            <option value="geographie">Géographie</option>
+                            <option value="mathematiques">Mathématiques</option>
+                            <option value="informatique">Informatique</option>
+                            <option value="science">Science</option>
+                            <option value="physique">Physique</option>
+                            <option value="chimie">Chimie</option>
+                            <option value="physique">Economie</option>
+                            <option value="chimie">Autre...</option>
+                        </select>
+                    </div>
+            </section>
+            <section class="contain">
+                <div class="all-book">
+                    c'est ici que seront publiés les livres
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                </div>
+            </section>
+            <div class="btn4">
+                <button><a href="livre.php">Publier un livre</a></button>
+            </div>
+            
+        </div> 
+         
+        <footer>
+                <p>&copy; MK - Ubix 2022</p>
+        </footer>
+        
+        <script type="text/javascript">
+            let boutton = document.querySelector("#btn")
+            let sidebar= document.querySelector(".sidebar")
+
+            boutton.onclick = function(){
+                sidebar.classList.toggle("active")
+            }
+        </script>

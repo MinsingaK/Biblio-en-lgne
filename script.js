@@ -11,12 +11,3 @@ btn.addEventListener('click', () => {
     widget.classList.toggle("active")
     input.focus()
 })
-
-
-//traitement de la sidebar
-let boutton = document.querySelector("#btn")
-let sidebar= document.querySelector(".sidebar")
-
-boutton.onclick = function(){
-  sidebar.classList.toggle("active")
-}

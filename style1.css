@@ -191,12 +191,13 @@ header span{
     font-style: italic;
 }
 
-.widget{
-    position: relative;
+/* .top .cat{
+    font-size: 18px;
     height: 50px;
-}
-
-.top .btn{
+    width: 60%;
+    background-color: aqua;
+} */
+/* .top .btn{
     cursor: pointer;
     border: 0;
     background-color: white;
@@ -207,9 +208,9 @@ header span{
     height: 50px;
     width: 50px;
     transition: transform .3s ease;
-}
+} */
 
-.widget .input{
+/* .widget .input{
     background-color: white;
     border: 0;
     font-size: 18px;
@@ -217,19 +218,11 @@ header span{
     height: 50px;
     width: 60px;
     transition: width .3s ease;
-}
+} */
 
 .btn:focus,
 .input:focus{
     outline: none;
-}
-
-.widget.active .btn{
-    transform: translateX(198px);
-}
-
-.widget.active .input{
-    width: 200px;
 }
 
 .contain{

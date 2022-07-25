@@ -1,4 +1,27 @@
 <?php
+     if(!empty($_POST)){
+        if(isset($_POST['title'], $_POST['categorie'], $_POST['document'], $_POST['msg'])){
+            //on récupère les données
+            $title = strip_tags($_POST['title']);
+            $categorie = strip_tags($_POST['categorie']);  
+            $document = strip_tags($_POST['document']);
+            $message = strip_tags($_POST['msg']);
+
+            //On enregistre en bd
+            require_once "./login/config.php";
+            $sql = "INSERT INTO `users`(`titre`, `categorie`, `data`, `message`) VALUES (:title,:categorie,:document,:msg)";
+            
+            $query = $db->prepare($sql);
+            
+            $query->bindValue(":titre", $title, PDO::PARAM_STR);
+            $query->bindValue(":categorie", $categorie, PDO::PARAM_STR);
+            $query->bindValue(":document", $document, PDO::PARAM_STR);
+            $query->bindValue(":msg", $message, PDO::PARAM_STR);  
+            
+            $query->execute();
+
+        }
+    }
     $title = "publication du livre";
 ?>
 <!DOCTYPE html>
@@ -29,10 +52,10 @@
         </header> 
         <div class="card">
             <p>Veuillez remplir les champs suivants!!!</p>
-            <form action="" method="get">
+            <form action="livre.php" method="POST">
                 <div class="form-container">
-                    <label for="titre" id="user">Titre</label>
-                    <input type="text" placeholder="entrer le titre de votre document" required>
+                    <label for="titre" id="title">Titre</label>
+                    <input type="text" name="title" placeholder="entrer le titre de votre document" required>
                     <label for="Catégorie" id="categorie">Catégorie</label> 
                     <select name="categorie" id="categorie">
                         <option value="histoire">Histoire</option>
@@ -42,10 +65,12 @@
                         <option value="science">Science</option>
                         <option value="physique">Physique</option>
                         <option value="chimie">Chimie</option>
+                        <option value="physique">Economie</option>
+                        <option value="autre">Autre...</option>
                     </select>
-                    <input type="file" placeholder="uploader votre livre" required>
-                    <label for="details" id="details">Message</label>
-                    <textarea placeholder="un petit message sur le contenu que vous puliez" required id="details" cols="30" rows="10"></textarea>
+                    <input name="document" type="file" placeholder="uploader votre livre" required>
+                    <label for="msg" id="msg">Message</label>
+                    <textarea name="msg" placeholder="un petit message sur le contenu que vous publiez" required id="details" cols="30" rows="10"></textarea>
                     <button onclick="validation();" type="submit">Publier le livre</button>
                 </div>
             </form>
@@ -53,12 +78,12 @@
     </body>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
-        function validation(){
-            swal({
-                text: "Création du compte reussie!",
-                icon: "success",
-                button: "Aww yiss!",
-            });
-        }
+        // function validation(){
+        //     swal({
+        //         text: "Création du compte reussie!",
+        //         icon: "success",
+        //         button: "Aww yiss!",
+        //     });
+        // }
     </script>
 </html>

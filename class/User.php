@@ -2,7 +2,7 @@
 class User{
     const LIMIT_USERNAME = '6';
     const LIMIT_PWD = '6';
-    const LIMIT_DETAILS = '50';
+    const LIMIT_DETAILS = '10';
     private $username;
     private $pwd;
     private $profession;
@@ -37,18 +37,5 @@ class User{
         }
         return $errors;
     }
-
-    // public function mistakes(): array
-    // {
-    //     $errors = [];
-        
-    //     if(strcmp($this->nomuser, 'nomuser') != 0){
-    //         $errors['nomuser']='le nom d\'utilsateur ne correspond pas';
-    //     }
-    //     if(strcmp($this->pwduser, 'pwduser') != 0){
-    //         $errors['pwduser']='Le mot de passe ne correspond pas';
-    //     }
-    //     return $errors;
-    // }
 
 }

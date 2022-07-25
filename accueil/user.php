@@ -2,18 +2,18 @@
     // initialiser la session
     session_start();
     // verifier si l'utilisateur est connecté et si c'est pas le cas, le rediriger ver la zone de connexion
-    // if(!isset($_SESSION['username'])){
-    //     header("Location: ../login/connexion.php");
-    //     exit();
+    if(!isset($_SESSION['username'])){
+        header("Location: ../login/login.php");
+        exit();
+    }
+    // $nomuser = null;
+    // if(!empty($_COOKIE['username'])){
+    //     $nomuser = $_POST['username'];
     // }
-    $nomuser = null;
-    if(!empty($_COOKIE['username'])){
-        $nomuser = $_POST['username'];
-    }
-    if(!empty($_POST['username'])){
-        setcookie('username',  $_POST['username']);
-        $nomuser = $_POST['username'];
-    }
+    // if(!empty($_POST['username'])){
+    //     setcookie('username',  $_POST['username']);
+    //     $nomuser = $_POST['username'];
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -66,9 +66,7 @@
                 <span>Ma Biblio</span>
             </header>
         </div>
-        <?php if($nomuser): ?>
-            <h1>Bonjour <?= htmlentities($nomuser) ?></h1>
-        <?php endif?>
+        <?php echo $_SESSION['username']; ?>
     </body>
     <script>
         let boutton = document.querySelector("#btn")
