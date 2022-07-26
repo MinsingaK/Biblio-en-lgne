@@ -35,14 +35,14 @@
                     <span class="tooltip">A propos</span>
                 </li>
                 <li>
-                    <a href="./login/login.php">
+                    <a href="loginUser.php">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
                         <span class="links_name">Connexion</span>
                     </a>
                     <span class="tooltip">Connexion</span>
                 </li>
                 <li>
-                    <a href="./login/register.php">
+                    <a href="register.php">
                         <i class="fa-solid fa-angle-right"></i>
                         <span class="links_name">Inscription</span>
                     </a>
@@ -81,13 +81,13 @@
                 </div>
             </section>
             <div class="btn4">
-                <button><a href="livre.php">Publier un livre</a></button>
+                <button><a href="login.php">Publier un livre</a></button>
             </div>
             
         </div> 
          
         <footer>
-                <p>&copy; MK - Ubix 2022</p>
+                <p>&copy; MK - IUC 2022</p>
         </footer>
         
         <script type="text/javascript">

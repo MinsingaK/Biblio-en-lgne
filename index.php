@@ -4,7 +4,7 @@
 ?>
         
             <section class="top">
-                <h2>Bienvenue sur <span>Ma Biblio</span></h2>
+                <!-- <h2>Bienvenue sur <span>Ma Biblio</span></h2>
                     <div class="cat">
                         <select name="categorie" id="categorie">
                             <option value="histoire">Histoire</option>
@@ -18,8 +18,8 @@
                             <option value="chimie">Autre...</option>
                         </select>
                     </div>
-            </section>
-            <section class="contain">
+            </section> -->
+            <!-- <section class="contain">
                 <div class="all-book">
                     c'est ici que seront publiés les livres
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
@@ -28,12 +28,12 @@
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
                 </div>
-            </section>
+            </section> -->
             <div class="btn4">
-                <button><a href="login/login.php">Publier un livre</a></button>
+                <button><a href="login.php">Publier un livre</a></button>
             </div>
             <footer>
-                <p>&copy; MK - Ubix 2022</p>
+                <p>&copy; MK - IUC 2022</p>
             </footer>
         </div>
     </body>

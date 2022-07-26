@@ -8,7 +8,7 @@
             $message = strip_tags($_POST['msg']);
 
             //On enregistre en bd
-            require_once "./login/config.php";
+            require_once "config.php";
             $sql = "INSERT INTO `users`(`titre`, `categorie`, `data`, `message`) VALUES (:title,:categorie,:document,:msg)";
             
             $query = $db->prepare($sql);

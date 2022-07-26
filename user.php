@@ -2,18 +2,10 @@
     // initialiser la session
     session_start();
     // verifier si l'utilisateur est connecté et si c'est pas le cas, le rediriger ver la zone de connexion
-    if(!isset($_SESSION['username'])){
-        header("Location: ../login/login.php");
+    if($_SESSION["autoriser"]!="oui"){
+        header("Location:login.php");
         exit();
     }
-    // $nomuser = null;
-    // if(!empty($_COOKIE['username'])){
-    //     $nomuser = $_POST['username'];
-    // }
-    // if(!empty($_POST['username'])){
-    //     setcookie('username',  $_POST['username']);
-    //     $nomuser = $_POST['username'];
-    // }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="shorcut icon" href="./images/alien-153542__340.jpg">
-    <link rel="stylesheet" href="../style1.css">
+    <link rel="stylesheet" href="style1.css">
     <script defer src="./script.js"></script>
     <title>page user</title>
 </head>
@@ -53,7 +45,7 @@
                     <span class="tooltip">A propos</span>
                 </li>
                 <li>
-                    <a href="./login/logout.php">
+                    <a href="logout.php">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span class="links_name">Déconnexion</span>
                     </a>
@@ -66,7 +58,7 @@
                 <span>Ma Biblio</span>
             </header>
         </div>
-        <?php echo $_SESSION['username']; ?>
+        <?= $_SESSION['username']; ?>
     </body>
     <script>
         let boutton = document.querySelector("#btn")

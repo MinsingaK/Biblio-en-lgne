@@ -1,5 +1,4 @@
 <?php
-
     if(!empty($_POST)){
         if(isset($_POST['username'], $_POST['pwd']) && !empty($_POST['username']) && !empty($_POST['pwd'])){
             //on se connecte à la bd
@@ -17,7 +16,7 @@
                 die("l'utilisateur et/ou le mot de passe est incorrect");
             }
             session_start();
-            header("Location: ../accueil/user.php");
+            header("Location: user.php");
             exit();
         }
     }
@@ -32,14 +31,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="./style.css">
         <title><?= $title ?></title>
     </head>
     <body class="body2">
     
 
     <?php
-        require '../functions/func.php';
+        //require '../functions/func.php';
         // if(est_connecte()){
         //     header("Location: ../accueil/user.php");
         //     exit();
@@ -50,7 +49,7 @@
             <nav>
                 <ul>
                     <div>
-                        <li><a href="../index.php">Accueil</a></li>
+                        <li><a href="./index.php">Accueil</a></li>
                         <i class="fa-solid fa-house"></i>
                     </div>
                     <div>
@@ -79,7 +78,7 @@
 
                     if($rows == 1){
                         $_SESSION['username'] = $username;
-                        header("Location: ../accueil/user.php");
+                        header("Location: user.php");
                     }else{
                          echo "le nom d'utilisateur ou le mot de passe est incorrect";
                     }
@@ -96,7 +95,7 @@
                 </div>
                 <a id="forgot" href="#">Mot de passe oublié?</a>
                 <button type="submit" class="btn">Login</button>
-                <p class="text">Don't have an account?<a href="../login/register.php">Register</a></p>
+                <p class="text">Don't have an account?<a href="register.php">Register</a></p>
                 
             </form>
         </div>
