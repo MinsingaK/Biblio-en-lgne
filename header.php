@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <link rel="shorcut icon" href="./images/alien-153542__340.jpg">
 
-        <link rel="stylesheet" href="./style1.css">
+        <link rel="stylesheet" href="style1.css">
         <title><?= $title ?></title>
     </head>
     <body>
@@ -72,12 +72,36 @@
             </section>
             <section class="contain">
                 <div class="all-book">
-                    c'est ici que seront publiés les livres
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
+                    <?php
+                    include("config.php");
+                    $requete = "SELECT * FROM publication ORDER BY date_publication";
+                    $result = $pdo->query($requete);
+                    if(!$result){
+                        echo "la récupération des données a rencontré un problème";
+                    }else{
+                        ?>
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>Titre du livre</th>
+                            <th>date de publication</th>
+                            <th>Auteur</th>
+                            <th>Document</th>
+                        </tr>
+                        <?php
+                            while($ligne=$result->fetch(PDO::FETCH_NUM)){
+                                echo "<tr>";
+                                foreach($ligne as $valeur){
+                                    echo "<td>$valeur</td>";
+                                }
+                                echo "</tr>";
+                            }
+                        ?>
+                    </table>
+                    <?php
+                         $result->closeCursor();   
+                        }
+                    ?>
                 </div>
             </section>
             <div class="btn4">

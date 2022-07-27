@@ -1,21 +1,21 @@
 <?php
     session_start();
-    @$username = $_POST['username'];
-    @$pwd = $_POST['pwd'];
+    @$nomuser = trim($_POST['nomuser']);
+    @$pwd = trim($_POST['pwd']);
     @$login = $_POST['login'];
     $message="";
     if(isset($login)){
         include("config.php");
-        $res=$pdo->prepare("select * from users where username=? and pwd=? limit 1");
+        $res=$pdo->prepare("SELECT * FROM users WHERE nomuser=? AND pwd=? LIMIT 1");
         $res->setFetchMode(PDO::FETCH_ASSOC);
-        $res->execute(array($username,md5($pwd)));
+        $res->execute(array($nomuser,md5($pwd)));
         $tab=$res->fetchAll();
         if(count($tab)==0){
-            $message="<li>Mauvais login ou mot de passe</li>";
+            $message="<span style='color:black'>Mauvais login ou mot de passe</span>";
         }else{
             $_SESSION["autoriser"]="oui";
-            $_SESSION["username"]=strtoupper($tab[0]["username"]);
-            header("Location:user.php");
+            $_SESSION["nomuser"]=strtoupper($tab[0]["nomuser"]);
+            header("location:publication.php");
         }
     }
     /*if(!empty($_POST)){
@@ -49,7 +49,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="style.css">
         <title><?= $title ?></title>
     </head>
     <body class="body2">
@@ -73,7 +73,7 @@
             
             <form action="login.php" method="POST">
                 <div class="form-control">
-                    <input name="username" type="text" required />
+                    <input name="nomuser" type="text" required />
                     <label>Username</label>
                 </div>
                 <div class="form-control">

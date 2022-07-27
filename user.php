@@ -1,11 +1,11 @@
 <?php
     // initialiser la session
-    session_start();
+    /*session_start();
     // verifier si l'utilisateur est connecté et si c'est pas le cas, le rediriger ver la zone de connexion
-    if($_SESSION["autoriser"]!="oui"){
-        header("Location:login.php");
+    if(@$_SESSION["autoriser"]!="oui"){
+        header("location:loginUser.php");
         exit();
-    }
+    }*/
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +43,13 @@
                         <span class="links_name">A propos</span>
                     </a>
                     <span class="tooltip">A propos</span>
+                </li>
+                <li>
+                    <a href="publication.php">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                        <span class="links_name">Publication</span>
+                    </a>
+                    <span class="tooltip">Publication</span>
                 </li>
                 <li>
                     <a href="logout.php">

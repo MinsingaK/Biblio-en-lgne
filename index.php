@@ -29,9 +29,9 @@
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, vero quasi nulla perspiciatis, vel in quo voluptas temporibus possimus, harum doloribus voluptates? Atque maiores, ratione labore unde blanditiis laudantium veniam?</p>
                 </div>
             </section> -->
-            <div class="btn4">
+            <!-- <div class="btn4">
                 <button><a href="login.php">Publier un livre</a></button>
-            </div>
+            </div> -->
             <footer>
                 <p>&copy; MK - IUC 2022</p>
             </footer>

@@ -1,27 +1,27 @@
 <?php
-     if(!empty($_POST)){
-        if(isset($_POST['title'], $_POST['categorie'], $_POST['document'], $_POST['msg'])){
-            //on récupère les données
-            $title = strip_tags($_POST['title']);
-            $categorie = strip_tags($_POST['categorie']);  
-            $document = strip_tags($_POST['document']);
-            $message = strip_tags($_POST['msg']);
-
-            //On enregistre en bd
-            require_once "config.php";
-            $sql = "INSERT INTO `users`(`titre`, `categorie`, `data`, `message`) VALUES (:title,:categorie,:document,:msg)";
-            
-            $query = $db->prepare($sql);
-            
-            $query->bindValue(":titre", $title, PDO::PARAM_STR);
-            $query->bindValue(":categorie", $categorie, PDO::PARAM_STR);
-            $query->bindValue(":document", $document, PDO::PARAM_STR);
-            $query->bindValue(":msg", $message, PDO::PARAM_STR);  
-            
-            $query->execute();
-
+    // include("register.php");
+    @$titre = trim($_POST['title']);
+    @$cat = $_POST['categorie'];
+    @$document = ($_POST['document']);
+    @$mess = $_POST['message'];
+    @$pub = $_POST['publication'];
+    $message="";
+    if(isset($publication)){
+        if(empty($message)){
+            include("config.php");
+            $req=$pdo->prepare("SELECT title FROM livre WHERE title=? LIMIT 1");
+            $req->setFetchMode(PDO::FETCH_ASSOC);
+            $req->execute(array($titre));
+            $tab=$req->fetchAll();
+            if(count($tab)>0){
+                $message="<span style='color=red'>title déjà existant</span>";
+            }else{
+                $ins=$pdo->prepare("INSERT INTO livre(titre_livre,categorie,document,nomuser) VALUE(?,?,?,?)");
+                $ins->execute(array($titre,$cat,$document,$nomuser));
+                header("location:user.php");
+            }
         }
-    }
+    }  
     $title = "publication du livre";
 ?>
 <!DOCTYPE html>
@@ -71,7 +71,7 @@
                     <input name="document" type="file" placeholder="uploader votre livre" required>
                     <label for="msg" id="msg">Message</label>
                     <textarea name="msg" placeholder="un petit message sur le contenu que vous publiez" required id="details" cols="30" rows="10"></textarea>
-                    <button onclick="validation();" type="submit">Publier le livre</button>
+                    <button name="publication" onclick="validation();" type="submit">Publier le livre</button>
                 </div>
             </form>
         </div>

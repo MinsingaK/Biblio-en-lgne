@@ -1,24 +1,25 @@
 <?php
-    @$username = $_POST['username'];
+    @$nomuser = trim($_POST['nomuser']);
     @$email = $_POST['email'];
-    @$pwd = $_POST['pwd'];
-    @$repeatpwd = $_POST['repeatpwd'];
-    @$details = $_POST['details'];
+    @$pwd = trim($_POST['pwd']);
+    @$repeatpwd = trim($_POST['repeatpwd']);
     @$profession = $_POST['profession'];
     @$inscription = $_POST['inscription'];
     $message="";
     if(isset($inscription)){
-        include("config.php");
-        $req=$pdo->prepare("select id from users where username=? limit 1");
-        $req->setFetchMode(PDO::FETCH_ASSOC);
-        $req->execute(array($username));
-        $tab=$req->fetchAll();
-        if(count($tab)>0){
-            $message="<li>username déjà existant</li>";
-        }else{
-            $ins=$pdo->prepare("insert into users(username,email,pwd,details,profession) value(?,?,?,?,?)");
-            $ins->execute(array($username,$email,md5($pwd),$details,$profession));
-            header("location:loginUser.php");
+        if(empty($message)){
+            include("config.php");
+            $req=$pdo->prepare("SELECT id_user FROM users WHERE nomuser=? LIMIT 1");
+            $req->setFetchMode(PDO::FETCH_ASSOC);
+            $req->execute(array($nomuser));
+            $tab=$req->fetchAll();
+            if(count($tab)>0){
+                $message="<span>nom d'utilisateur déjà existant</span>";
+            }else{
+                $ins=$pdo->prepare("INSERT INTO users(nomuser,email,profession,pwd) VALUE(?,?,?,?)");
+                $ins->execute(array($nomuser,$email,$profession,md5($pwd)));
+                header("location:loginUser.php");
+            }
         }
     }    
     /*require 'config.php';
@@ -65,7 +66,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="style.css">
         <title><?= $title ?></title>
     </head>
     <body class="body3">
@@ -90,15 +91,18 @@
             <form action="register.php" method="POST">
                 <div class="user-details">
                     <div class="input-box">
-                        <label for="username" id="username">Username</label>
-                        <input id="username" type="text" name="username" placeholder="entrer votre nom d'utilisateur" required>
+                        <label for="nomuser" id="nomuser">Username</label>
+                        <input id="nomuser" type="text" name="nomuser" placeholder="entrer votre nom d'utilisateur" required>
                         
                     </div>
                     <div class="input-box">
                         <label for="email" id="email">Email</label>
                         <input id="email" type="email" name="email" placeholder="entrer votre email" required>
                     </div>
-
+                    <div class="input-box">
+                        <label for="profession" id="profession">Profession</label> 
+                        <input type="text" name="profession" placeholder="entrer votre profession" required>
+                    </div>
                     <div class="input-box">
                         <label for="pwd" id="pwd">Password</label>
                         <input id="pwd" type="password" name="pwd" placeholder="entrer votre mot de passe" required>
@@ -108,15 +112,6 @@
                         <label for="repeatpwd" id="repeatpwd">Confirm password</label>
                         <input id="repeatpwd" type="password" name="repeatpwd" placeholder="Confirmer votre mot de passe" required>
                         
-                    </div>
-                    <div class="input-box">
-                        <label for="details" id="details">Details of your profession</label>
-                        <textarea name="details" placeholder="Quelques détails sur votre profession" required id="details" cols="30" rows="10"></textarea>
-                        
-                    </div>
-                    <div class="input-box">
-                        <label for="profession" id="profession">Profession</label> 
-                        <input type="text" name="profession" placeholder="entrer votre profession" required>
                     </div>  
                 </div>
                 <button name="inscription" type="submit">Create account</button>
