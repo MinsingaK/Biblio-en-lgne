@@ -66,10 +66,6 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id_user`, `nomuser`, `email`, `profession`, `pwd`) VALUES
-(1, 'nkrumah', 'minsingapepito@gmail.com', 'enseignant', '13085a63a2b3e4beb7ab10ee395aefe4'),
-(2, 'pepito', 'patnguets@gmail.com', 'Etudiant', '0a2993f807cac25b70b5670cdd6f10f4');
-
 --
 -- Index pour les tables déchargées
 --
@@ -78,7 +74,7 @@ INSERT INTO `users` (`id_user`, `nomuser`, `email`, `profession`, `pwd`) VALUES
 -- Index pour la table `livre`
 --
 ALTER TABLE `livre`
-  ADD PRIMARY KEY (`id_livre`);
+  ADD PRIMARY KEY (``);
 
 --
 -- Index pour la table `publication`

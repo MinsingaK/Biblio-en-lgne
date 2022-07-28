@@ -1,11 +1,11 @@
 <?php
     // initialiser la session
-    /*session_start();
+    session_start();
     // verifier si l'utilisateur est connecté et si c'est pas le cas, le rediriger ver la zone de connexion
     if(@$_SESSION["autoriser"]!="oui"){
         header("location:loginUser.php");
         exit();
-    }*/
+    }
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +65,7 @@
                 <span>Ma Biblio</span>
             </header>
         </div>
-        <?= $_SESSION['username']; ?>
+        <?= $_SESSION['nomuser']; ?>
     </body>
     <script>
         let boutton = document.querySelector("#btn")

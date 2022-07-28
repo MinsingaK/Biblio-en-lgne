@@ -1,4 +1,9 @@
 <?php
+    /*session_start();
+    if(session_destroy()){
+        header("location:index.php");
+        exit(); inserer ceci après la publication  pour fermer la session
+    }*/
     // include("register.php");
     @$titre = trim($_POST['title']);
     @$cat = $_POST['categorie'];
@@ -31,7 +36,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="style.css">
         <title><?= $title ?></title>
     </head>
     <body>
@@ -40,7 +45,7 @@
             <nav>
                 <ul>
                     <div>
-                        <li><a href="./index.php">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <i class="fa-solid fa-house"></i>
                     </div>
                     <div>
@@ -52,7 +57,7 @@
         </header> 
         <div class="card">
             <p>Veuillez remplir les champs suivants!!!</p>
-            <form action="livre.php" method="POST">
+            <form action="livre.php" method="POST" enctype="multipart/form-data">
                 <div class="form-container">
                     <label for="titre" id="title">Titre</label>
                     <input type="text" name="title" placeholder="entrer le titre de votre document" required>
@@ -68,12 +73,17 @@
                         <option value="physique">Economie</option>
                         <option value="autre">Autre...</option>
                     </select>
-                    <input name="document" type="file" placeholder="uploader votre livre" required>
+                    <input name="document" type="file" placeholder="uploader votre livre" accept=".pdf" required>
                     <label for="msg" id="msg">Message</label>
                     <textarea name="msg" placeholder="un petit message sur le contenu que vous publiez" required id="details" cols="30" rows="10"></textarea>
-                    <button name="publication" onclick="validation();" type="submit">Publier le livre</button>
+                    <button name="publication" type="submit">Publier le livre</button>
                 </div>
             </form>
+            <?php if(!empty($message)) : ?>
+                <div id="message">
+                <?php echo "$message";?>
+                </div>
+            <?php endif ?>
         </div>
     </body>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

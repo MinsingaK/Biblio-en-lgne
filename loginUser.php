@@ -1,7 +1,7 @@
 <?php
     session_start();
-    @$nomuser = $_POST['nomuser'];
-    @$pwd = $_POST['pwd'];
+    @$nomuser = trim($_POST['nomuser']);
+    @$pwd = trim($_POST['pwd']);
     @$login = $_POST['login'];
     $message="";
     if(isset($login)){
@@ -11,7 +11,7 @@
         $res->execute(array($nomuser,md5($pwd)));
         $tab=$res->fetchAll();
         if(count($tab)==0){
-            $message="<span>Mauvais login ou mot de passe</span>";
+            $message="<span style='color:red; padding-left:41%; font-size:20px'>Mauvais login ou mot de passe</span>";
         }else{
             $_SESSION["autoriser"]="oui";
             $_SESSION["nomuser"]=strtoupper($tab[0]["nomuser"]);
@@ -28,7 +28,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="style.css">
         <title><?= $title ?></title>
     </head>
     <body class="body2">
@@ -56,31 +56,13 @@
                 </ul>
             </nav>
         </header> 
+        <?php if(!empty($message)) : ?>
+                <div id="message">
+                <?php echo "$message";?>
+                </div>
+        <?php endif ?>
         <div class="card-box">
             <h1>Please Login</h1>
-            <?php
-                /*require_once('config.php');
-                session_start();
-                if(isset($_POST['username'])){
-                    $username = stripslashes($_REQUEST['username']);
-                    $username = mysqli_real_escape_string($conn, $username);
-                   
-                    $pwd = stripslashes($_REQUEST['pwd']);
-                    $pwd = mysqli_real_escape_string($conn, $pwd);
-
-                    $query = "SELECT * FROM `users` WHERE username='$username' and pwd='".hash('sha256',$pwd)."'";
-
-                    $result = mysqli_query($conn, $query) or die(mysql_error());
-                    $rows =mysql_num_rows($result);
-
-                    if($rows == 1){
-                        $_SESSION['username'] = $username;
-                        header("Location: user.php");
-                    }else{
-                         echo "le nom d'utilisateur ou le mot de passe est incorrect";
-                    }
-                }*/    
-                ?>
             <form action="loginUser.php" method="POST">
                 <div class="form-control">
                     <input name="nomuser" type="text" required />
@@ -90,11 +72,11 @@
                     <input name="pwd" type="password" required />
                     <label>Password</label>
                 </div>
-                <a id="forgot" href="#">Mot de passe oublié?</a>
+                <a id="forgot" href="motdepasse.php">Mot de passe oublié?</a>
                 <button name="login" type="submit" class="btn">Login</button>
                 <p class="text">Don't have an account?<a href="register.php">Register</a></p>
-                
             </form>
+            
         </div>
     </body>
     <script>

@@ -14,50 +14,20 @@
             $req->execute(array($nomuser));
             $tab=$req->fetchAll();
             if(count($tab)>0){
-                $message="<span>nom d'utilisateur déjà existant</span>";
+                $message="<span style='color:red; padding-left:10%; font-size:20px'>Username déjà existant, veuillez choisir un autre s'il vous plait.</span>";
             }else{
                 $ins=$pdo->prepare("INSERT INTO users(nomuser,email,profession,pwd) VALUE(?,?,?,?)");
                 $ins->execute(array($nomuser,$email,$profession,md5($pwd)));
-                header("location:loginUser.php");
+                header("location:loginUser.php");   
             }
+            /*if(password_verify($pwd =! $repeatpwd)){
+                $message="<span style='color:red; padding-left:25%; font-size:20px'>les mots de passe doivent être identiques!!!</span>";
+            }else{
+
+            }*/
         }
     }    
-    /*require 'config.php';
-    if(!empty($_POST)){
-        if(isset($_POST['username'], $_POST['pwd'], $_POST['email'], $_POST['details'], $_POST['profession'])){
-            //on récupère les données
-            $username = htmlentities(trim($_POST['username']));
-            $email = strip_tags($_POST['email']);  
-            $pwd = password_hash($_POST['pwd'], PASSWORD_ARGON2ID);
-            $repeatpwd = password_hash($_POST['repeatpwd'], PASSWORD_ARGON2ID);
-            $details = strip_tags($_POST['details']);
-            $profession = strip_tags($_POST['profession']);
-            if($repeatpwd == $pwd){
-                 //On enregistre en bd
-                 require_once "./config.php";
-                 $sql = "INSERT INTO `users`(`username`,`email`,`pwd`,`details`,`profession`) VALUES (:username,:email ,'$pwd', :details, :profession)";
-                 
-                 $query = $db->prepare($sql);
-                 
-                 $query->bindValue(":username", $username, PDO::PARAM_STR);
-                 $query->bindValue(":email", $_POST['email'], PDO::PARAM_STR);
-                 $query->bindValue(":details", $details, PDO::PARAM_STR);
-                 $query->bindValue(":profession", $profession, PDO::PARAM_STR);  
-                 
-                 $query->execute();
-                 if($query){
-                    echo "Inscription reussie, <a href='login.php'>connectez vous ici!!</a>";
-                }
-            }else{
-                $message = "les mots de passe sont différents";
-        
-                echo '<div style="margin-top:245px; float:right; margin-right: 70px"><span style="color:red; font-weight:normal;">'.$message.'</span></div>';
-            }
-                
-        }
-    }*/
     $title = "Inscription";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,6 +36,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cosmo/bootstrap.min.css"> -->
         <link rel="stylesheet" href="style.css">
         <title><?= $title ?></title>
     </head>
@@ -114,12 +85,21 @@
                         
                     </div>  
                 </div>
+                <?php if(!empty($message)) : ?>
+                    <div id="message">
+                    <?php echo "$message";?>
+                    </div>
+                <?php endif ?>
                 <button name="inscription" type="submit">Create account</button>
             </form>
         </div>
     </body>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
-
+        // function validation(){
+        //     swal({
+        //         text: "Hello world!",
+        //     });
+        // }
     </script>
 </html>
