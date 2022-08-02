@@ -13,7 +13,6 @@
         <title><?= $title ?></title>
     </head>
     <body class="body2">
-        
         <div class="card-box">
             <h1>New password</h1>
             <form action="motdepasse.php" method="POST">
@@ -28,18 +27,18 @@
 
                         $message = "Bonjour voici votre nouveau mot de passe : $pwd";
                         $headers = 'Content-Type: text/plain; charset="utf-8"' . " ";
-
+ 
                         if(mail($_POST['email'], 'Mot de passe oublié', $message, $headers)){
                             $sql = "UPDATE users SET pwd = ? WHERE email = ?";
                             $etat=$pdo->prepare($sql);
                             $etat->execute([$new_pwd, $_POST['email']]);
-                            echo "mail envoyé";
+                            echo "Mail envoyé";
                         }else{
                             echo "<h3 style='margin-left:30%; color:black'>Une erreur est surevnue...</h3>";
                         }
                     }
                 ?>
-                <button type="submit" class="btn">Envoyer</button>
+                <button type="submit" class="btn">M'envoyez un mot de passe</button>
         
             </form>
         </div>

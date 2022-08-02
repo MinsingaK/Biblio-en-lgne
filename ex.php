@@ -76,15 +76,49 @@
             </section>
             <section class="contain">
                 <div class="all-book">
-                    <table>
-                        <tr>
-                            <th>Titre du livre</th>
-                            <th>Auteur</th>
-                            <th>date de publication</th>
-                            <th>Document</th>
-                            <th>Categorie</th>
-                        </tr>
-                    </table>
+                    <?php
+                        
+                        ?>
+                         <table>
+                            <tr>
+                                <th>Titre du livre</th>
+                                <th>Auteur</th>
+                                <th>date de publication</th>
+                                <th>Document</th>
+                                <th>Categorie</th>
+                            </tr>
+                            <!-- <?php while($row=$res->fetch(PDO::FETCH_ASSOC)) : ?> -->
+                                <tr>
+                                    <!-- <td><?= $row['title'] ?></td>
+                                    <td><?= $row['nomuser'] ?></td>
+                                    <td><?= $row['date_pub'] ?></td>
+                                    <td><?= $row['document'] ?></td>
+                                    <td><?= $row['categorie'] ?></td> -->
+                                </tr>
+                                <?php endwhile ?>
+                        </table>
+                                
+                                
+                                <?php
+                        // $requete = "SELECT * FROM publication ORDER BY date_publication";
+                    // $result = $pdo->query($requete);
+                    // if(!$result){
+                    //     echo "la récupération des données a rencontré un problème";
+                    // }else{
+                        ?>
+                        <?php
+                            // while($ligne=$result->fetch(PDO::FETCH_NUM)){
+                            //     echo "<tr>";
+                            //     foreach($ligne as $valeur){
+                            //         echo "<td>$valeur</td>";
+                            //     }
+                            //     echo "</tr>";
+                            // }
+                        ?>
+                    <?php
+                        //  $result->closeCursor();   
+                        //}
+                    ?>
                 </div>
             </section>
             <div class="btn4">
@@ -100,7 +134,7 @@
             let boutton = document.querySelector("#btn")
             let sidebar= document.querySelector(".sidebar")
 
-            boutton.onclick = function(){
+            boutton.click = function(){
                 sidebar.classList.toggle("active")
             }
         </script>

@@ -76,28 +76,7 @@
                             <th>Categorie</th>
                         </tr>
                     </table>
-                    <?php
-                    include("config.php");
-                    $requete = "SELECT * FROM publication ORDER BY date_publication";
-                    $result = $pdo->query($requete);
-                    if(!$result){
-                        echo "la récupération des données a rencontré un problème";
-                    }else{
-                        ?>
-                        <?php
-                            while($ligne=$result->fetch(PDO::FETCH_NUM)){
-                                echo "<tr>";
-                                foreach($ligne as $valeur){
-                                    echo "<td>$valeur</td>";
-                                }
-                                echo "</tr>";
-                            }
-                        ?>
-                    </table>
-                    <?php
-                         $result->closeCursor();   
-                        }
-                    ?>
+                    
                 </div>
             </section>
         </div>
