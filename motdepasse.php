@@ -13,21 +13,6 @@
         <title><?= $title ?></title>
     </head>
     <body class="body2">
-        <!-- <header>
-            <span>Ma Biblio</span>
-            <nav>
-                <ul>
-                    <div>
-                        <li><a href="./index.php">Accueil</a></li>
-                        <i class="fa-solid fa-house"></i>
-                    </div>
-                    <div>
-                        <li><a href="#">A propos</a></li>
-                        <i class="fa-solid fa-info"></i>
-                    </div>
-                </ul>
-            </nav>
-        </header>  -->
         
         <div class="card-box">
             <h1>New password</h1>

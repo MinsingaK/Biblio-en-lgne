@@ -60,12 +60,47 @@
                 </li>
             </ul>
         </div>
+        <p>Bonjour <?= $_SESSION['nomuser']; ?> Bienvenue!!!</p>
         <div class="home-content">
             <header>
                 <span>Ma Biblio</span>
             </header>
+            <section class="contain">
+                <div class="all-book">
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>Titre du livre</th>
+                            <th>date de publication</th>
+                            <th>Document</th>
+                            <th>Categorie</th>
+                        </tr>
+                    </table>
+                    <?php
+                    include("config.php");
+                    $requete = "SELECT * FROM publication ORDER BY date_publication";
+                    $result = $pdo->query($requete);
+                    if(!$result){
+                        echo "la récupération des données a rencontré un problème";
+                    }else{
+                        ?>
+                        <?php
+                            while($ligne=$result->fetch(PDO::FETCH_NUM)){
+                                echo "<tr>";
+                                foreach($ligne as $valeur){
+                                    echo "<td>$valeur</td>";
+                                }
+                                echo "</tr>";
+                            }
+                        ?>
+                    </table>
+                    <?php
+                         $result->closeCursor();   
+                        }
+                    ?>
+                </div>
+            </section>
         </div>
-        <?= $_SESSION['nomuser']; ?>
     </body>
     <script>
         let boutton = document.querySelector("#btn")

@@ -13,6 +13,12 @@ body{
     background: linear-gradient(90deg, rgba(148,154,189,1) 0%, rgba(39,39,46,0.9752275910364145) 100%, rgba(7,20,23,1) 100%);
 }
 
+body p{
+    position: absolute;
+    top: 10%;
+    left: 45%;
+    font-size: 1.5rem;
+}
 .sidebar{
     position: fixed;
     top: 0;
@@ -182,10 +188,11 @@ header span{
     flex-direction: column;
 }
 
-/* .top .cat{
-    width: 80%;
-
-} */
+.top select{
+    width: 100%;
+    outline: none;
+    font-size: 1.2rem;
+}
 
 .top h2{
     color: white;
@@ -202,7 +209,7 @@ header span{
 }
 
 .contain{
-    margin-top: 20px;
+    margin-top: 60px;
     margin-right: 60px;
     margin-left: 100px;
     /* background-color: cadetblue; */
@@ -223,15 +230,37 @@ header span{
 }
 
 .contain .all-book{
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     /* background-color: blueviolet; */
     margin-top: 10px;
     padding: 10px;
-    border: 1px solid;
-    overflow:visible;
+    /* border: 1px solid; */
+    /* overflow:visible; */
+    margin-right: 20px;
+    align-items: center;
+    justify-content: center;
 }
+
+.all-book table{
+    border-collapse: collapse;
+}
+
+.all-book table th{
+    font-size: 20px;
+    border-bottom: 3px solid rgb(224, 222, 222);;
+    padding: 5px 40px;
+    font-weight: 500;
+}
+
+td{
+    font-size: 15px; 
+    padding: 5px 30px;
+    font-weight: 400;
+    text-align: center;
+} 
 
 .btn4{
     height: 50px;

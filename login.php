@@ -18,29 +18,8 @@
             header("location:publication.php");
         }
     }
-    /*if(!empty($_POST)){
-        if(isset($_POST['username'], $_POST['pwd']) && !empty($_POST['username']) && !empty($_POST['pwd'])){
-            //on se connecte à la bd
-            require_once "./config.php";
-            $sql = "SELECT * FROM `users` WHERE username=:username";
-            $query=$db->prepare($sql);
-            $query->bindValue(":username", $_POST['username'], PDO::PARAM_STR);
-            $query->execute();
-            $user=$query->fetch();
-            
-            if(!$user){
-                die("l'utilisateur et/ou le mot de passe est incorrect");
-            }
-            if(!password_verify($_POST['pwd'],$user['pwd'])){
-                die("l'utilisateur et/ou le mot de passe est incorrect");
-            }
-            session_start();
-            header("Location: livre.php");
-            exit();
-        }
-    }*/
     $title="Connexion";
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +37,7 @@
             <nav>
                 <ul>
                     <div>
-                        <li><a href="./index.php">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <i class="fa-solid fa-house"></i>
                     </div>
                     <div>
