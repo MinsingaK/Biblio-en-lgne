@@ -1,8 +1,11 @@
 <?php
+    session_start();
     include("config.php");
     if(isset($_POST['publication'])){
         @$titre = trim($_POST['titre']);
+        @$categorie = $_POST['categorie'];
         @$mess = trim($_POST['msg']);
+        $today = date("Y-m-d H:i:s");
         if(isset($_FILES['fichier']) and $_FILES['fichier']['error'] == 0){
             $dossier = 'documents/';
             $temp_name = $_FILES['fichier']['tmp_name'];
@@ -29,32 +32,17 @@
         }else{
 
             }
-            $req=$pdo->prepare("INSERT INTO livre VALUE('$titre','$ph_name','$mess')");
-            $req->execute(array($titre,$ph_name,$mess));
-            header("location:index.php");
-        }
-    /*@$titre = trim($_GET['title']);
-    @$cat = $_GET['categorie'];
-    @$document = ($_GET['document']);
-    @$mess = $_GET['message'];
-    @$pub = $_GET['publication'];
-    $message="";
-    if(isset($publication)){
-        if(empty($message)){
-            include("config.php");
-            $req=$pdo->prepare("SELECT title FROM livre WHERE title=? LIMIT 1");
-            $req->setFetchMode(PDO::FETCH_ASSOC);
-            $req->execute(array($titre));
-            $tab=$req->fetchAll();
-            if(count($tab)>0){
-                $message="<span style='color=red'>titre déjà existant</span>";
-            }else{
-                $ins=$pdo->prepare("INSERT INTO livre(NULL,NULL,title,categorie,document) VALUE(?,?,?)");
-                $ins->execute(array($titre,$cat,$document));
+            $req=$pdo->prepare("INSERT INTO livre (titre,categorie,document,date_publication,commentaire) VALUE('$titre','$categorie','$ph_name','$today','$mess')");
+            $req->execute(array($titre,$categorie,$ph_name,$mess,$today));
+            if($ins){
+                $_SESSION['status'] = "Insertion réussie";
                 header("location:user.php");
             }
+            else{
+                $_SESSION['status'] = "Insertion non réussie";
+                header("location:publication.php");
+            }
         }
-    }  */
     $title = "publication du livre";
 ?> 
 <!DOCTYPE html>
@@ -83,13 +71,19 @@
                 </ul>
             </nav>
         </header> 
+        <?php
+            if(isset($_SESSION['status'])){
+                echo "<h4>".$_SESSION['status']."</h4>";
+                unset($_SESSION['status']);
+            }
+        ?> 
         <div class="card">
             <p>Veuillez remplir les champs suivants!!!</p>
             <form action="livre.php" method="POST" enctype="multipart/form-data">
                 <div class="form-container">
                     <label for="titre" id="title">Titre</label>
                     <input type="text" name="title" placeholder="entrer le titre de votre document" required>
-                        <!-- <label for="Catégorie" id="categorie">Catégorie</label> 
+                        <label for="Catégorie" id="categorie">Catégorie</label> 
                         <select name="categorie" id="categorie">
                             <option value="histoire">Histoire</option>
                             <option value="geographie">Géographie</option>
@@ -100,18 +94,13 @@
                             <option value="chimie">Chimie</option>
                             <option value="physique">Economie</option>
                             <option value="autre">Autre...</option>
-                        </select> -->
+                        </select>
                     <input name="fichier" type="file" placeholder="uploader votre livre" required>
-                    <label for="msg" id="msg">Message</label>
+                    <label for="msg" id="msg">Commentaire</label>
                     <textarea name="msg" placeholder="un petit message sur le contenu que vous publiez" required id="details" cols="30" rows="10"></textarea>
                     <button name="publication" type="submit">Publier le livre</button>
                 </div>
             </form>
-            <?php if(!empty($message)) : ?>
-                <div id="message">
-                <?php echo "$message";?>
-                </div>
-            <?php endif ?>
         </div>
     </body>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -190,7 +190,11 @@ header span{
 
 .cat{
     margin-top: 25px;
+    display: flex;
+    flex-direction: row;
 }
+
+
 .top select{
     width: 100%;
     outline: none;
@@ -233,6 +237,7 @@ header span{
 }
 
 .contain .all-book{
+    gap: 65px;
     align-items: center;
     display: flex;
     /* background-color: blueviolet; */ 
@@ -242,6 +247,7 @@ header span{
     margin-right: 20px;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .all-book table{

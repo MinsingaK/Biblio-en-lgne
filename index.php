@@ -72,18 +72,45 @@
                             <option value="physique">Economie</option>
                             <option value="chimie">Autre...</option>
                         </select>
+                        <button>Search</button>
                     </div>
             </section>
             <section class="contain">
                 <div class="all-book">
                     <table>
                         <tr>
+                            <th>ID</th>
                             <th>Titre du livre</th>
                             <th>Auteur</th>
                             <th>date de publication</th>
                             <th>Document</th>
                             <th>Categorie</th>
                         </tr>
+                        <?php
+                            include "config.php"; 
+                            $req = $pdo->prepare("SELECT id_post,titre,date_publication,nomuser,document,commentaire
+                            FROM users u INNER JOIN post p
+                            ON u.id_user = p.id_user INNER JOIN livre l
+                            ON l.id_livre = p.id_livre");
+                            // $req->execute();
+                            $row = $req->rowCount();
+                            if($row == 0){
+                                echo "<span style='color:red; font-size:1.5rem'>Il n'ya pas encore de livres publiés.</span>";
+                            }else{
+                                $req->execute();
+                                while($row = $req->fetch(PDO::FETCH_ASSOC)){
+                                    ?>
+                                    <tr>
+                                        <td><?= $row['id_post'] ?></td>
+                                        <td><?= $row['titre'] ?></td>
+                                        <td><?= $row['nomuser'] ?></td>
+                                        <td><?= $row['date_publication'] ?></td>
+                                        <td><?= $row['categorie'] ?></td>
+                                    </tr>
+                                <?php
+                                }
+                            }
+                        ?>     
                     </table>
                 </div>
             </section>

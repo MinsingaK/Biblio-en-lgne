@@ -81,19 +81,17 @@
                         ?>
                          <table>
                             <tr>
-                                <th>Titre du livre</th>
+                                <th>ID</th>
                                 <th>Auteur</th>
-                                <th>date de publication</th>
-                                <th>Document</th>
-                                <th>Categorie</th>
+                                <th>Email</th>
+                                <th>Date inscription</th>
                             </tr>
                             <!-- <?php while($row=$res->fetch(PDO::FETCH_ASSOC)) : ?> -->
                                 <tr>
-                                    <!-- <td><?= $row['title'] ?></td>
+                                    <!-- <td><?= $row['id'] ?></td>
                                     <td><?= $row['nomuser'] ?></td>
-                                    <td><?= $row['date_pub'] ?></td>
-                                    <td><?= $row['document'] ?></td>
-                                    <td><?= $row['categorie'] ?></td> -->
+                                    <td><?= $row['email'] ?></td>
+                                    <td><?= $row['date_inscription'] ?></td>
                                 </tr>
                                 <?php endwhile ?>
                         </table>

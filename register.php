@@ -5,6 +5,7 @@
     @$repeatpwd = trim($_POST['repeatpwd']);
     @$profession = $_POST['profession'];
     @$inscription = $_POST['inscription'];
+    $today = date("Y-m-d H:i:s");
     $message="";
     if(isset($inscription)){
         if(empty($message)){
@@ -16,8 +17,8 @@
             if(count($tab)>0){
                 $message="<span style='color:red; padding-left:10%; font-size:20px'>Username déjà existant, veuillez choisir un autre s'il vous plait.</span>";
             }else{
-                $ins=$pdo->prepare("INSERT INTO users(nomuser,email,profession,pwd) VALUE(?,?,?,?)");
-                $ins->execute(array($nomuser,$email,$profession,md5($pwd)));
+                $ins=$pdo->prepare("INSERT INTO users(nomuser,email,profession,motdepasse,date_inscription) VALUE(?,?,?,?,?)");
+                $ins->execute(array($nomuser,$email,$profession,md5($pwd),$today));
                 header("location:loginUser.php");   
             }
             /*if(password_verify($pwd =! $repeatpwd)){
@@ -57,7 +58,7 @@
             </nav>
         </header> 
         <div class="register-box">
-            <p>Veuillez remplir les champs suivants!!!</p>
+            <p>Veuillez remplir les champs suivants.</p>
                     
             <form action="register.php" method="POST">
                 <div class="user-details">
@@ -87,7 +88,7 @@
                 </div>
                 <?php if(!empty($message)) : ?>
                     <div id="message">
-                    <?php echo "$message";?>
+                        <?php echo "$message";?>
                     </div>
                 <?php endif ?>
                 <button name="inscription" type="submit">Create account</button>
@@ -96,10 +97,5 @@
     </body>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
-        // function validation(){
-        //     swal({
-        //         text: "Hello world!",
-        //     });
-        // }
     </script>
 </html>
