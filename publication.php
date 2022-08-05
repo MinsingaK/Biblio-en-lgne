@@ -1,7 +1,37 @@
 <?php
-    session_start();
-    include("config.php");
+    //session_start();
+    include "config.php";
+    @$titre = trim($_POST['titre']);
+    @$categorie = $_POST['categorie'];
+    @$mess = trim($_POST['msg']);
+    $today = date("Y-m-d H:i:s");
     if(isset($_POST['publication'])){
+        if(isset($_FILES['fichier']['name'])){
+            $file_name = $_FILES['fichier']['name'];
+            $file_tmp = $_FILES['fichier']['tmp_name'];
+
+            move_uploaded_file($file_tmp,"./pdf/".$file_name);
+
+            $req=$pdo->prepare("INSERT INTO livre (titre,categorie,document,commentaire,date_publication) VALUE('$titre','$categorie','$file_name','$mess','$today')");
+            $req->execute(array($titre,$categorie,$file_name,$today,$mess));
+
+            if($req){
+                ?> 
+                echo "Livre inséré avec succès";
+                <?php
+            }else{
+                ?> 
+                echo "Veuillez réessayer!";
+                <?php
+            }
+        }
+        else{
+            ?> 
+            echo "Tentative échouée!";
+            <?php
+        }
+    }
+    /*if(isset($_POST['publication'])){
         @$titre = trim($_POST['titre']);
         @$categorie = $_POST['categorie'];
         @$mess = trim($_POST['msg']);
@@ -32,17 +62,17 @@
         }else{
 
             }
-            $req=$pdo->prepare("INSERT INTO livre (titre,categorie,document,date_publication,commentaire) VALUE('$titre','$categorie','$ph_name','$today','$mess')");
-            $req->execute(array($titre,$categorie,$ph_name,$mess,$today));
-            if($ins){
-                $_SESSION['status'] = "Insertion réussie";
-                header("location:user.php");
-            }
-            else{
-                $_SESSION['status'] = "Insertion non réussie";
-                header("location:publication.php");
-            }
+        $req=$pdo->prepare("INSERT INTO livre (titre,categorie,document,date_publication,commentaire) VALUE('$titre','$categorie','$ph_name','$today','$mess')");
+        $req->execute(array($titre,$categorie,$ph_name,$mess,$today));
+        if($ins){
+            $_SESSION['status'] = "Insertion réussie";
+            header("location:user.php");
         }
+        else{
+            $_SESSION['status'] = "Insertion non réussie";
+            header("location:publication.php");
+        }
+    }*/
     $title = "publication du livre";
 ?> 
 <!DOCTYPE html>
@@ -95,7 +125,7 @@
                             <option value="physique">Economie</option>
                             <option value="autre">Autre...</option>
                         </select>
-                    <input name="fichier" type="file" placeholder="uploader votre livre" required>
+                    <input name="fichier" type="file" placeholder="uploader votre livre" accept="pdf" required>
                     <label for="msg" id="msg">Commentaire</label>
                     <textarea name="msg" placeholder="un petit message sur le contenu que vous publiez" required id="details" cols="30" rows="10"></textarea>
                     <button name="publication" type="submit">Publier le livre</button>

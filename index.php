@@ -10,7 +10,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <link rel="shorcut icon" href="./images/alien-153542__340.jpg">
-
         <link rel="stylesheet" href="style1.css">
         <title><?= $title ?></title>
     </head>
@@ -61,6 +60,52 @@
             <section class="top">
                 <h2>Bienvenue sur <span>Ma Biblio</span></h2>
                     <div id="cate" class="cat">
+                    <?php
+                        include "config.php";
+                        if(isset($_POST['search'])){
+                            $req = $pdo->prepare("SELECT id_post,titre,date_publication,nomuser,document,commentaire,categorie
+                                FROM users u INNER JOIN post p
+                                ON u.id_user = p.id_user INNER JOIN livre l
+                                ON l.id_livre = p.id_livre
+                                WHERE categorie = '" . $_REQUEST['categorie'] ."'"); 
+                            if($result = mysqli_query($link, $sql)){  
+                                if(mysqli_num_rows($result) > 0){
+                                        echo "<table>";
+                                            echo "<tr>";
+                                                echo "<th>ID</th>";
+                                                echo "<th>Titre du livre</th>";
+                                                echo "<th>Auteur</th>";
+                                                echo "<th>date de publication</th>";
+                                                echo "<th>Document</th>";
+                                                echo "<th>Categorie</th>";
+                                                echo "<th>Commentaire</th>";
+                                            echo "</tr>";
+                                        while($row = $req->fetch(PDO::FETCH_ASSOC)){
+                                            echo "<tr>";
+                                                echo "<td>" . $row['id_post'] . "</td>";
+                                                echo "<td>" . $row['titre'] . "</td>";
+                                                echo "<td>" . $row['nomuser'] . "</td>";
+                                                echo "<td>" . $row['date_publication'] . "</td>";
+                                                echo "<td>" . $row['document'] . "</td>";
+                                                echo "<td>" . $row['categorie'] . "</td>";
+                                                echo "<td>" . $row['commentaire'] . "</td>";
+                                            echo "</tr>";
+                                        }
+                                        echo "</table>";
+                                        // Close result set
+                                        mysqli_free_result($result);
+                                    } else{
+                                        echo "No records matching your query were found.";
+                                    }
+                                } else{
+                                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                                }
+                                 
+                                // Close connection
+                                $pdo->closeCursor();
+                            }
+                                ?>
+
                         <select name="categorie" id="categorie">
                             <option value="histoire">Histoire</option>
                             <option value="geographie">Géographie</option>
@@ -72,7 +117,7 @@
                             <option value="physique">Economie</option>
                             <option value="chimie">Autre...</option>
                         </select>
-                        <button>Search</button>
+                        <button name="search">Search</button>
                     </div>
             </section>
             <section class="contain">
@@ -85,13 +130,14 @@
                             <th>date de publication</th>
                             <th>Document</th>
                             <th>Categorie</th>
+                            <th>Commentaire</th>
                         </tr>
                         <?php
                             include "config.php"; 
-                            $req = $pdo->prepare("SELECT id_post,titre,date_publication,nomuser,document,commentaire
+                            $req = $pdo->prepare("SELECT id_post,titre,nomuser,date_publication,document,categorie,commentaire
                             FROM users u INNER JOIN post p
                             ON u.id_user = p.id_user INNER JOIN livre l
-                            ON l.id_livre = p.id_livre");
+                            ON l.id_livre = p.id_livre"); 
                             // $req->execute();
                             $row = $req->rowCount();
                             if($row == 0){
@@ -105,7 +151,9 @@
                                         <td><?= $row['titre'] ?></td>
                                         <td><?= $row['nomuser'] ?></td>
                                         <td><?= $row['date_publication'] ?></td>
+                                        <td><?= $row['document'] ?></td>
                                         <td><?= $row['categorie'] ?></td>
+                                        <td><?= $row['commentaire'] ?></td>
                                     </tr>
                                 <?php
                                 }
@@ -131,3 +179,5 @@
                 sidebar.classList.toggle("active")
             }
         </script>
+    </body>
+</html>
